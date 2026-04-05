@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/png" href="assets/logo.png"/>
+<title>Teracore Technology</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e0e3e6",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#455f87",
+                      "on-secondary-fixed": "#001d32",
+                      "on-secondary-fixed-variant": "#004a75",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#adc8f5",
+                      "surface-dim": "#d8dadd",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#001c3a",
+                      "surface-container-highest": "#e0e3e6",
+                      "on-surface-variant": "#43474e",
+                      "secondary-container": "#04a8ff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed": "#cde5ff",
+                      "outline-variant": "#c4c6cf",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f2f4f7",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eff1f4",
+                      "secondary": "#006399",
+                      "tertiary-container": "#00253d",
+                      "inverse-primary": "#adc8f5",
+                      "tertiary-fixed-dim": "#95ccff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#cde5ff",
+                      "on-tertiary-fixed": "#001d32",
+                      "inverse-surface": "#2d3133",
+                      "surface-container-high": "#e6e8eb",
+                      "primary-container": "#002347",
+                      "primary-fixed": "#d4e3ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#003a5d",
+                      "surface-bright": "#f7f9fc",
+                      "tertiary": "#000e1b",
+                      "on-tertiary-container": "#0091dd",
+                      "on-background": "#191c1e",
+                      "surface-container": "#eceef1",
+                      "background": "#f7f9fc",
+                      "secondary-fixed-dim": "#95ccff",
+                      "on-primary-container": "#718bb5",
+                      "primary": "#000d21",
+                      "on-primary-fixed-variant": "#2c486d",
+                      "outline": "#74777f",
+                      "on-tertiary-fixed-variant": "#004a75",
+                      "on-surface": "#191c1e",
+                      "surface": "#f7f9fc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Manrope"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        @keyframes slide-up-fade {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-animate > * {
+            opacity: 0;
+            animation: slide-up-fade 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .hero-animate > *:nth-child(1) { animation-delay: 0.08s; }
+        .hero-animate > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-animate > *:nth-child(3) { animation-delay: 0.32s; }
+        .hero-animate > *:nth-child(4) { animation-delay: 0.44s; }
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(32px);
+            transition:
+                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform;
+        }
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-section-link {
+            font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+            letter-spacing: -0.025em;
+            font-weight: 700;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            transition:
+                color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.4s ease;
+        }
+        .nav-section-link--active {
+            color: #04a8ff;
+            border-bottom-color: #04a8ff;
+        }
+        .nav-section-link:not(.nav-section-link--active) {
+            color: rgb(203 213 225);
+        }
+        .nav-section-link:not(.nav-section-link--active):hover {
+            color: #fff;
+            opacity: 0.8;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-animate > * {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+            [data-reveal] {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .nav-section-link {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-[#000d21] to-[#002347] shadow-[0_20px_40px_rgba(0,13,33,0.06)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<a class="flex items-center gap-3 text-2xl font-extrabold text-white tracking-tighter font-headline shrink-0" href="#home">
+<img src="assets/logo.png" alt="" width="40" height="40" class="h-9 w-9 md:h-10 md:w-10 object-contain shrink-0" decoding="async"/>
+<span><span class="text-secondary-container">Tera</span>core Technology</span>
+</a>
+<div class="hidden md:flex items-center space-x-8" id="nav-section-links">
+<a class="nav-section-link nav-section-link--active" data-section="home" href="#home">Home</a>
+<a class="nav-section-link" data-section="about" href="#about">About</a>
+<a class="nav-section-link" data-section="services" href="#services">Services</a>
+<a class="nav-section-link" data-section="why-choose-us" href="#why-choose-us">Why Choose Us</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="hidden lg:block text-slate-300 hover:text-white transition-all duration-200 scale-95 active:scale-90 font-headline font-bold"><a href="#contact">Contact</a></button>
+<a class="inline-flex items-center justify-center bg-secondary-container text-on-secondary-container px-6 py-2.5 rounded-xl font-headline font-bold scale-95 active:scale-90 transition-transform hover:opacity-90" href="#contact">Get Started</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-primary" id="home">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-40" data-alt="abstract digital connection network with flowing blue light particles on a deep navy background high tech futuristic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo6K5xtFelMwEhObV94wnjiL1_2tnzdlSPTS2Mgb_tblfrmm5pnxcB44otsvhDw8Ot54QSQXMij6dvRZ6TR-QA0DVR84Baa_YK6RLNZxDeG1PTlb_4S4DuKIYwEpgWvMNoyu-bWbE0qjt3LLfEwAj8dUaX8xuXGIMCe4MOUeuUQxvg9G9UfzwJgEUGkcRiAqFHIq4lY_hZnCMui5aFt6U25Wyk6zxdcZ6BPgV5bu__uO2kvs0ttO3aFh1BFgtPh1av0rZUAR_uVcY"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary via-primary/80 to-transparent"></div>
+</div>
+<div class="container mx-auto px-8 relative z-10">
+<div class="max-w-4xl hero-animate">
+<span class="text-secondary-container font-headline font-extrabold tracking-widest text-sm uppercase mb-4 block">Innovation at Scale</span>
+<h1 class="text-white text-5xl md:text-7xl font-extrabold font-headline leading-[1.1] tracking-tighter mb-8">
+                    Empowering Your Business with <span class="text-secondary-container">Advanced IT Solutions</span>
+</h1>
+<p class="text-on-primary-container text-xl md:text-2xl font-light leading-relaxed mb-10 max-w-2xl">
+                    High-quality IT equipment and integrated technology solutions tailored for your success. We bridge the gap between complex infrastructure and seamless operations.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-xl font-headline font-extrabold text-lg transition-all hover:shadow-[0_0_20px_rgba(4,168,255,0.4)] scale-100 active:scale-95" ><a href="#core">Explore Solutions</a></button>
+<button class="glass-effect text-white border border-white/20 px-8 py-4 rounded-xl font-headline font-extrabold text-lg transition-all hover:bg-white/10 scale-100 active:scale-95"><a href="#contact">Contact Us</a></button>
+</div>
+</div>
+</div>
+</header>
+<!-- About Section -->
+<section class="py-24 bg-surface" id="about">
+<div class="container mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative" data-reveal style="--reveal-delay: 0ms">
+<div class="aspect-square rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="modern minimalist office space with high end workstations and professional team collaborating in a bright airy atmosphere" src="https://customerfocus.network/wp-content/uploads/2024/11/AdobeStock_784568090.jpeg"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-primary-container p-8 rounded-xl shadow-xl hidden md:block">
+<span class="text-4xl font-extrabold text-white block mb-1">15+</span>
+<span class="text-on-primary-container font-headline text-sm uppercase tracking-widest">Years Experience</span>
+</div>
+</div>
+<div data-reveal style="--reveal-delay: 90ms">
+<h2 class="text-primary-container text-4xl md:text-5xl font-extrabold font-headline tracking-tighter mb-8">Who We Are</h2>
+<div class="space-y-6">
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            Teracore Technology is a leading force in the Middle Eastern IT landscape, specializing in high-performance hardware and sophisticated software ecosystems. We serve as a strategic bridge for enterprises seeking reliability and innovation.
+                        </p>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            Our philosophy centers on being a single-source provider. By integrating procurement, deployment, and ongoing maintenance, we offer our clients competitive prices without compromising on the world-class quality their operations demand.
+                        </p>
+<div class="pt-6">
+<div class="flex items-center space-x-4 mb-4">
+<span class="material-symbols-outlined text-secondary-container bg-secondary-container/10 p-2 rounded-lg">verified</span>
+<span class="font-bold text-primary-container">Certified Enterprise Partner</span>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-secondary-container bg-secondary-container/10 p-2 rounded-lg">speed</span>
+<span class="font-bold text-primary-container">24/7 Technical Response Team</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vision & Mission Section -->
+<section class="py-24 bg-surface-container-low">
+<div class="container mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Vision Card -->
+<div class="bg-surface-container-lowest p-12 rounded-xl group transition-all duration-300 hover:translate-y-[-8px]" data-reveal style="--reveal-delay: 0ms">
+<div class="w-16 h-16 bg-primary-container rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="visibility">visibility</span>
+</div>
+<h3 class="text-3xl font-extrabold font-headline mb-6 text-primary-container">Our Vision</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        To be the region's premier source supplier, defined by unwavering loyalty to our clients. We envision a future where customized technology products and dedicated long-term support are the standard for every business we touch.
+                    </p>
+</div>
+<!-- Mission Card -->
+<div class="bg-primary-container p-12 rounded-xl group transition-all duration-300 hover:translate-y-[-8px]" data-reveal style="--reveal-delay: 100ms">
+<div class="w-16 h-16 bg-secondary-container rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-secondary-container/20">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h3 class="text-3xl font-extrabold font-headline mb-6 text-white">Our Mission</h3>
+<p class="text-on-primary-container text-lg leading-relaxed">
+                        To serve as a trusted partner by deeply understanding unique business needs. We deliver tailored solutions and exceptional service that transform technical challenges into competitive advantages for our partners.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Products/Services Section -->
+<section class="py-24 bg-surface" id="services">
+<div class="container mx-auto px-8">
+<div class="text-center mb-20" data-reveal style="--reveal-delay: 0ms">
+<h2 class="text-primary-container text-4xl md:text-6xl font-extrabold font-headline tracking-tighter mb-4" id="core">Core Capabilities</h2>
+<p class="text-on-surface-variant text-xl max-w-2xl mx-auto">Comprehensive technology management from infrastructure to execution.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:shadow-[0_32px_64px_rgba(0,13,33,0.08)]" data-reveal style="--reveal-delay: 40ms">
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-6" data-icon="memory">memory</span>
+<h4 class="text-xl font-bold font-headline mb-4">IT Hardware</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Next-generation servers, enterprise laptops, and specialized networking components from world-leading manufacturers.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:shadow-[0_32px_64px_rgba(0,13,33,0.08)]" data-reveal style="--reveal-delay: 100ms">
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-6" data-icon="terminal">terminal</span>
+<h4 class="text-xl font-bold font-headline mb-4">Software Solutions</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Enterprise resource planning, security suites, and custom cloud environments designed for operational efficiency.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:shadow-[0_32px_64px_rgba(0,13,33,0.08)]" data-reveal style="--reveal-delay: 160ms">
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-6" data-icon="hub">hub</span>
+<h4 class="text-xl font-bold font-headline mb-4">Integrated Systems</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Unified technology stacks that allow hardware and software to communicate seamlessly across your entire organization.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl transition-all duration-300 hover:shadow-[0_32px_64px_rgba(0,13,33,0.08)]" data-reveal style="--reveal-delay: 220ms">
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-6" data-icon="support_agent">support_agent</span>
+<h4 class="text-xl font-bold font-headline mb-4">Technical Support</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Preventative maintenance and 24/7 emergency response to ensure zero downtime for your critical business systems.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Partner brands -->
+<section class="py-24 bg-surface-container-low border-t border-outline-variant/25" id="partners" aria-labelledby="partners-heading">
+<div class="container mx-auto px-8">
+<div class="text-center max-w-3xl mx-auto mb-16" data-reveal style="--reveal-delay: 0ms">
+<span class="font-headline font-bold tracking-widest text-xs uppercase text-secondary-container mb-3 block">Authorized &amp; trusted</span>
+<h2 class="text-primary-container text-3xl md:text-5xl font-extrabold font-headline tracking-tighter mb-4" id="partners-heading">Brands We Work With</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">Enterprise-grade partnerships across hardware, networking, security, and cloud—so you get genuine products, aligned support, and solutions that fit your stack.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 30ms">
+<img alt="Dell" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/dell.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Dell</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 60ms">
+<img alt="HP" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/hp.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">HP</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 90ms">
+<img alt="Cisco" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/cisco.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Cisco</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 120ms">
+<div class="min-h-[40px] flex items-center justify-center text-center font-headline font-extrabold text-lg md:text-xl text-primary-container tracking-tight transition-colors duration-300 group-hover:text-secondary-container px-1">Hikvision</div>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Hikvision</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 150ms">
+<img alt="Microsoft" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Microsoft</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 180ms">
+<img alt="VMware" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/vmware.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">VMware</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 210ms">
+<div class="min-h-[40px] flex items-center justify-center text-center font-headline font-extrabold text-lg md:text-xl text-primary-container tracking-tight transition-colors duration-300 group-hover:text-secondary-container px-1">Aruba</div>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Aruba</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 240ms">
+<img alt="Veeam" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/veeam.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Veeam</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 270ms">
+<div class="min-h-[40px] flex items-center justify-center text-center font-headline font-extrabold text-lg md:text-xl text-primary-container tracking-tight transition-colors duration-300 group-hover:text-secondary-container px-1">Sophos</div>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Sophos</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 300ms">
+<img alt="Lenovo" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/lenovo.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Lenovo</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 330ms">
+<img alt="Fortinet" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/fortinet.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Fortinet</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 360ms">
+<img alt="Kaspersky" class="brand-logo h-9 md:h-10 w-auto max-w-[132px] object-contain opacity-[0.88] grayscale transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100" decoding="async" height="40" loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/kaspersky.svg" width="120"/>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Kaspersky</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 390ms">
+<div class="min-h-[40px] flex items-center justify-center text-center font-headline font-extrabold text-lg md:text-xl text-primary-container tracking-tight transition-colors duration-300 group-hover:text-secondary-container px-1">Canon</div>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Canon</span>
+</div>
+<div class="group flex flex-col items-center justify-center gap-3 rounded-xl bg-surface-container-lowest p-7 md:p-8 border border-outline-variant/30 shadow-sm transition-all duration-300 hover:border-secondary-container/35 hover:shadow-[0_24px_48px_rgba(0,13,33,0.07)] hover:-translate-y-1" data-reveal style="--reveal-delay: 420ms">
+<div class="flex flex-col items-center justify-center min-h-[40px]" aria-hidden="true">
+<span class="text-2xl md:text-[1.65rem] font-extrabold font-headline text-primary-container tracking-tight leading-none transition-colors duration-300 group-hover:text-secondary-container">Dahua</span>
+</div>
+<span class="text-[11px] md:text-xs font-bold font-headline text-on-surface-variant tracking-wide text-center">Dahua Technology</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="py-24 bg-primary text-white overflow-hidden" id="why-choose-us">
+<div class="container mx-auto px-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div data-reveal style="--reveal-delay: 0ms">
+<h2 class="text-5xl md:text-6xl font-extrabold font-headline tracking-tighter mb-12">The Teracore <br/><span class="text-secondary-container">Advantage</span></h2>
+<div class="space-y-8">
+<div class="flex items-start space-x-6">
+<div class="w-12 h-12 rounded-full border border-secondary-container/30 flex items-center justify-center shrink-0">
+<span class="text-secondary-container font-headline font-bold">01</span>
+</div>
+<div>
+<h5 class="text-xl font-bold mb-2">Competitive Pricing</h5>
+<p class="text-on-primary-container">Leveraging direct supplier relationships to deliver premium value for enterprise budgets.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6">
+<div class="w-12 h-12 rounded-full border border-secondary-container/30 flex items-center justify-center shrink-0">
+<span class="text-secondary-container font-headline font-bold">02</span>
+</div>
+<div>
+<h5 class="text-xl font-bold mb-2">High Quality</h5>
+<p class="text-on-primary-container">Rigorous QA standards for every hardware component and software deployment.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6">
+<div class="w-12 h-12 rounded-full border border-secondary-container/30 flex items-center justify-center shrink-0">
+<span class="text-secondary-container font-headline font-bold">03</span>
+</div>
+<div>
+<h5 class="text-xl font-bold mb-2">One-Stop Provider</h5>
+<p class="text-on-primary-container">A single point of contact for procurement, licensing, setup, and maintenance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative" data-reveal style="--reveal-delay: 100ms">
+<img class="rounded-xl shadow-2xl opacity-80 grayscale hover:grayscale-0 transition-all duration-500" data-alt="close up of glowing blue led lights on enterprise server racks in a secure climate controlled data center facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-XjfRuYiCIcTzJPDPYdQRvY4nTpuObqKee8mJhwPup7tyW1p7qC2AqnfdUitmT45txFXiXVHAWwA7Er_OLpsZg5po1UQLBFMvR6F8wsoUsCZsnB_uwwoQLPHHtBPwPBjG2aElqOX2dMdhy_4AnpeOcrZzTmE2ijC3hJmsWExCL1_53FTr5oAbuZJqyem6hdu3c5-7HCCiEk1iCFKSEO7B0WIDNwEV5_4xG7h9iQUVakQGw51dGT88uoiKbgQStTg7PYDIaWQURos"/>
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary-container/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 bg-surface" id="contact">
+<div class="container mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+<div class="lg:col-span-2" data-reveal style="--reveal-delay: 0ms">
+<h2 class="text-primary-container text-4xl md:text-5xl font-extrabold font-headline tracking-tighter mb-8" id="Contact">Get in Touch</h2>
+<p class="text-on-surface-variant text-lg mb-12">Ready to transform your IT infrastructure? Our consultants are standing by to architect your next technology leap.</p>
+<div class="space-y-8">
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-secondary-container" data-icon="location_on">location_on</span>
+<span class="text-on-surface">14/6 Al Orouba Street, New Maadi, Cairo, Egypt</span>
+</div>
+
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-secondary-container" data-icon="call">call</span>
+<span class="text-on-surface font-bold text-lg">+022 51 8 4625</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-3" data-reveal style="--reveal-delay: 90ms">
+<div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_20px_40px_rgba(0,13,33,0.04)]">
+<form class="space-y-6" id="contact-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-primary-container mb-2 font-label tracking-wide uppercase" for="contact-name">Full Name</label>
+<input class="w-full bg-surface-container-low border-none border-b-2 border-outline/20 focus:border-secondary-container focus:ring-0 transition-all px-4 py-3 rounded-lg" id="contact-name" name="name" placeholder="Mahmoud Abdelwahab" required type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-primary-container mb-2 font-label tracking-wide uppercase" for="contact-email">Email Address</label>
+<input class="w-full bg-surface-container-low border-none border-b-2 border-outline/20 focus:border-secondary-container focus:ring-0 transition-all px-4 py-3 rounded-lg" id="contact-email" name="email" placeholder="Abdelwahab@company.com" required type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-primary-container mb-2 font-label tracking-wide uppercase" for="contact-message">Your Message</label>
+<textarea class="w-full bg-surface-container-low border-none border-b-2 border-outline/20 focus:border-secondary-container focus:ring-0 transition-all px-4 py-3 rounded-lg" id="contact-message" name="message" placeholder="Tell us about your project needs..." required rows="4"></textarea>
+</div>
+<button class="w-full bg-primary-container text-white font-headline font-extrabold py-4 rounded-xl transition-all hover:bg-primary active:scale-[0.98]" type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#f7f9fc] dark:bg-[#000d21] border-t border-[#002347]/10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-16 max-w-7xl mx-auto">
+<div>
+<div class="font-manrope font-bold text-xl text-[#002347] dark:text-[#04a8ff] mb-4"><span class="text-secondary">Tera</span>core Technology</div>
+<p class="text-slate-500 dark:text-slate-400 font-inter leading-relaxed text-sm">
+                    Strategic IT hardware and software integration partner for the modern enterprise.
+                </p>
+</div>
+<div class="space-y-4">
+<h6 class="text-[#002347] dark:text-white font-bold mb-4 uppercase text-xs tracking-widest">Resources</h6>
+<div class="flex flex-col space-y-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#04a8ff] underline-offset-4 hover:underline transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#04a8ff] underline-offset-4 hover:underline transition-all duration-200" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="space-y-4">
+<h6 class="text-[#002347] dark:text-white font-bold mb-4 uppercase text-xs tracking-widest">Connect</h6>
+<div class="flex flex-col space-y-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#04a8ff] underline-offset-4 hover:underline transition-all duration-200" href="#">LinkedIn</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#04a8ff] underline-offset-4 hover:underline transition-all duration-200" href="#">Careers</a>
+</div>
+</div>
+</div>
+<div class="text-center pb-12 border-t border-[#002347]/5 mt-8">
+<p class="text-slate-500 dark:text-slate-400 font-inter leading-relaxed text-sm py-8">
+                © 2024 Teracore Technology. New Maadi, Cairo.
+            </p>
+</div>
+</footer>
+<script>
+(function () {
+  var sectionIds = ['home', 'about', 'services', 'why-choose-us'];
+  var nav = document.getElementById('nav-section-links');
+  var links = nav ? nav.querySelectorAll('[data-section]') : [];
+  var navOffset = 100;
+  var lastActive = '';
+
+  function sectionTop(el) {
+    return el.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function getActiveSection() {
+    var doc = document.documentElement;
+    var y = window.scrollY + navOffset;
+    if (window.innerHeight + window.scrollY >= doc.scrollHeight - 32) {
+      return 'why-choose-us';
+    }
+    var active = 'home';
+    var i;
+    for (i = 0; i < sectionIds.length; i++) {
+      var el = document.getElementById(sectionIds[i]);
+      if (!el) continue;
+      if (y >= sectionTop(el)) active = sectionIds[i];
+    }
+    return active;
+  }
+
+  function setNavActive(id) {
+    if (!nav || id === lastActive) return;
+    lastActive = id;
+    links.forEach(function (link) {
+      var sid = link.getAttribute('data-section');
+      if (sid === id) link.classList.add('nav-section-link--active');
+      else link.classList.remove('nav-section-link--active');
+    });
+  }
+
+  function updateNavFromScroll() {
+    setNavActive(getActiveSection());
+  }
+
+  var navTicking = false;
+  function onScrollNav() {
+    if (navTicking) return;
+    navTicking = true;
+    window.requestAnimationFrame(function () {
+      updateNavFromScroll();
+      navTicking = false;
+    });
+  }
+
+  if (nav && links.length) {
+    window.addEventListener('scroll', onScrollNav, { passive: true });
+    window.addEventListener('resize', updateNavFromScroll);
+    window.addEventListener('hashchange', updateNavFromScroll);
+    updateNavFromScroll();
+  }
+
+  var revealNodes = document.querySelectorAll('[data-reveal]');
+  if (revealNodes.length) {
+    var revealIo = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        });
+      },
+      { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.02 }
+    );
+    revealNodes.forEach(function (el) {
+      revealIo.observe(el);
+    });
+
+    function revealInViewNow() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      revealNodes.forEach(function (el) {
+        if (el.classList.contains('is-visible')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.94 && r.bottom > vh * 0.04) {
+          el.classList.add('is-visible');
+          revealIo.unobserve(el);
+        }
+      });
+    }
+
+    revealInViewNow();
+    window.addEventListener('load', function () {
+      window.requestAnimationFrame(function () {
+        revealInViewNow();
+        updateNavFromScroll();
+      });
+    });
+  }
+
+  var contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nameEl = document.getElementById('contact-name');
+      var emailEl = document.getElementById('contact-email');
+      var msgEl = document.getElementById('contact-message');
+      var name = nameEl ? nameEl.value.trim() : '';
+      var email = emailEl ? emailEl.value.trim() : '';
+      var message = msgEl ? msgEl.value.trim() : '';
+      var subject = encodeURIComponent('Teracore website — inquiry from ' + (name || 'visitor'));
+      var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      window.location.href = 'mailto:info@teracoreeg.com?subject=' + subject + '&body=' + body;
+    });
+  }
+})();
+</script>
+</body></html>
